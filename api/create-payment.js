@@ -78,7 +78,7 @@ module.exports = async (req, res) => {
       TradeDesc:         tradeDesc,
       ItemName:          itemName,
       ReturnURL:         `${siteUrl}/api/payment-notify`,
-      OrderResultURL:    `${siteUrl}/payment-result.html`,
+      OrderResultURL:    `${siteUrl}/api/payment-result`,
       ClientBackURL:     `${siteUrl}/booking.html`,
       ChoosePayment:     'Credit',
       EncryptType:       '1',
