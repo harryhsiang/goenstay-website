@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>立即預約 | 有緣居共享空間</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --oak: #8a5c2e;
+  --oak-deep: #6a3e18;
+  --oak-light: #c8a060;
+  --oak-bg: #f5f0e8;
+  --cream: #faf7f2;
+  --warm-white: #fff9f2;
+  --sand: #e8dcc8;
+  --border: #ddd0b8;
+  --border-light: #ece2cf;
+  --text: #3a3228;
+  --text-soft: #5a5040;
+  --muted: #8a7e6e;
+  --green: #5a7a50;
+  --shadow-sm: 0 2px 8px rgba(90,60,20,0.06);
+  --shadow: 0 4px 24px rgba(90,60,20,0.08);
+}
+* { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+html { scroll-behavior:smooth; }
+body {
+  background:var(--oak-bg);
+  font-family:'Noto Sans TC',sans-serif;
+  color:var(--text);
+  line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+  min-height:100vh;
+}
+a { color:inherit; text-decoration:none; }
+button { font-family:inherit; cursor:pointer; }
+
+/* NAV */
+.nav {
+  background:rgba(255,249,242,0.95);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--border-light);
+  padding:0 clamp(16px,4vw,40px);
+  display:flex; align-items:center; justify-content:space-between;
+  height:60px;
+  position:sticky; top:0; z-index:100;
+}
+.nav-logo { font-family:'Noto Serif TC',serif; font-size:16px; color:var(--oak); letter-spacing:0.1em; }
+.nav-back { font-size:12px; color:var(--muted); letter-spacing:0.05em; }
+.nav-back:hover { color:var(--oak); }
+
+/* PROGRESS */
+.progress-wrap {
+  background:var(--cream);
+  border-bottom:1px solid var(--border-light);
+  padding:18px clamp(16px,4vw,40px);
+}
+.progress-inner { max-width:640px; margin:0 auto; }
+.progress-steps {
+  display:flex; align-items:center; justify-content:space-between;
+  position:relative;
+}
+.progress-steps::before {
+  content:'';
+  position:absolute; left:0; right:0; top:50%;
+  height:2px; background:var(--border);
+  z-index:0;
+  transform:translateY(-50%);
+}
+.progress-fill {
+  position:absolute; left:0; top:50%;
+  height:2px; background:var(--oak);
+  z-index:1; transform:translateY(-50%);
+  transition:width 0.4s ease;
+}
+.step-dot {
+  width:32px; height:32px; border-radius:50%;
+  border:2px solid var(--border);
+  background:var(--cream);
+  display:flex; align-items:center; justify-content:center;
+  font-size:12px; font-weight:600; color:var(--muted);
+  position:relative; z-index:2;
+  transition:all 0.3s;
+  flex-shrink:0;
+}
+.step-dot.active { border-color:var(--oak); background:var(--oak); color:white; }
+.step-dot.done { border-color:var(--oak); background:var(--oak); color:white; }
+.step-labels {
+  display:flex; justify-content:space-between;
+  margin-top:8px;
+}
+.step-label {
+  font-size:11px; color:var(--muted); letter-spacing:0.05em;
+  text-align:center; flex:1;
+}
+.step-label.active { color:var(--oak); font-weight:500; }
+
+/* MAIN */
+.main { max-width:640px; margin:0 auto; padding:clamp(24px,4vw,40px) clamp(16px,4vw,24px); }
+
+/* STEP PANELS */
+.step-panel { display:none; }
+.step-panel.active { display:block; animation:fadeIn 0.3s ease; }
+@keyframes fadeIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
+
+.step-title {
+  font-family:'Noto Serif TC',serif;
+  font-size:clamp(18px,3vw,22px); font-weight:400;
+  color:var(--text); letter-spacing:0.06em;
+  margin-bottom:6px;
+}
+.step-sub { font-size:13px; color:var(--muted); margin-bottom:24px; }
+
+/* SPACE SELECTOR */
+.space-tabs {
+  display:flex; gap:10px; margin-bottom:20px;
+}
+.space-tab {
+  flex:1; padding:12px; border-radius:10px;
+  border:2px solid var(--border);
+  background:white; cursor:pointer;
+  text-align:center; transition:all 0.2s;
+}
+.space-tab:hover { border-color:var(--oak-light); }
+.space-tab.active { border-color:var(--oak); background:#fdf5e8; }
+.space-tab-icon { font-size:22px; margin-bottom:4px; }
+.space-tab-label { font-size:13px; font-weight:500; color:var(--text); }
+.space-tab-sub { font-size:11px; color:var(--muted); }
+
+/* PACKAGE CARDS */
+.pkg-grid {
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+@media(max-width:480px){ .pkg-grid { grid-template-columns:1fr; } }
+.pkg-card {
+  border:2px solid var(--border);
+  border-radius:12px; padding:16px;
+  background:white; cursor:pointer;
+  transition:all 0.2s; position:relative;
+}
+.pkg-card:hover { border-color:var(--oak-light); box-shadow:var(--shadow-sm); }
+.pkg-card.selected { border-color:var(--oak); background:#fdf5e8; }
+.pkg-card.selected::after {
+  content:'✓';
+  position:absolute; top:10px; right:12px;
+  width:20px; height:20px; border-radius:50%;
+  background:var(--oak); color:white;
+  font-size:11px; display:flex; align-items:center; justify-content:center;
+  font-weight:700;
+}
+.pkg-name { font-size:13px; font-weight:500; color:var(--text); margin-bottom:4px; }
+.pkg-desc { font-size:11px; color:var(--muted); line-height:1.6; margin-bottom:10px; }
+.pkg-price { font-size:20px; font-weight:600; color:var(--oak); }
+.pkg-price-unit { font-size:11px; color:var(--muted); }
+
+/* FORM FIELDS */
+.field { margin-bottom:18px; }
+.field-label {
+  font-size:12px; font-weight:500; color:var(--text-soft);
+  letter-spacing:0.08em; margin-bottom:8px; display:block;
+}
+.field-label .req { color:#c0392b; margin-left:2px; }
+.field input, .field select, .field textarea {
+  width:100%; padding:12px 14px;
+  border:1.5px solid var(--border);
+  border-radius:10px; background:white;
+  font-family:'Noto Sans TC',sans-serif;
+  font-size:14px; color:var(--text);
+  transition:border-color 0.2s;
+  outline:none;
+}
+.field input:focus, .field select:focus, .field textarea:focus {
+  border-color:var(--oak);
+}
+.field input::placeholder, .field textarea::placeholder { color:#b8ac9e; }
+.field textarea { resize:vertical; min-height:80px; }
+.field-row { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+@media(max-width:480px){ .field-row { grid-template-columns:1fr; } }
+.field-hint { font-size:11px; color:var(--muted); margin-top:5px; }
+
+/* DATE/TIME AREA */
+.datetime-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+@media(max-width:480px){ .datetime-grid { grid-template-columns:1fr; } }
+
+/* PEOPLE COUNT (桌遊) */
+.people-control {
+  display:flex; align-items:center; gap:12px;
+}
+.people-btn {
+  width:36px; height:36px; border-radius:50%;
+  border:1.5px solid var(--border);
+  background:white; font-size:18px; color:var(--oak);
+  display:flex; align-items:center; justify-content:center;
+  cursor:pointer; transition:all 0.2s; flex-shrink:0;
+}
+.people-btn:hover { border-color:var(--oak); background:var(--oak-bg); }
+.people-count {
+  font-size:20px; font-weight:600; color:var(--text);
+  min-width:24px; text-align:center;
+}
+
+/* SUMMARY */
+.summary-card {
+  background:white;
+  border:1.5px solid var(--border);
+  border-radius:14px; padding:22px;
+  margin-bottom:20px;
+}
+.summary-title {
+  font-family:'Noto Serif TC',serif;
+  font-size:14px; font-weight:500; color:var(--oak);
+  letter-spacing:0.1em; margin-bottom:14px;
+  padding-bottom:10px; border-bottom:1px solid var(--border-light);
+}
+.summary-row {
+  display:flex; justify-content:space-between;
+  font-size:13px; padding:6px 0;
+}
+.summary-row .key { color:var(--muted); }
+.summary-row .val { color:var(--text); font-weight:500; text-align:right; }
+.summary-total {
+  display:flex; justify-content:space-between; align-items:center;
+  margin-top:12px; padding-top:12px;
+  border-top:1.5px solid var(--border);
+}
+.summary-total .key { font-size:14px; font-weight:600; color:var(--text); }
+.summary-total .val { font-size:22px; font-weight:700; color:var(--oak); }
+
+/* WEEKEND NOTICE */
+.notice {
+  background:#fdf5e8;
+  border:1px solid var(--oak-light);
+  border-radius:8px; padding:10px 14px;
+  font-size:12px; color:var(--oak);
+  margin-bottom:16px;
+}
+
+/* BUTTONS */
+.btn-row { display:flex; gap:10px; margin-top:8px; }
+.btn {
+  padding:14px 24px; border-radius:30px;
+  font-size:13px; font-weight:500; letter-spacing:0.1em;
+  border:none; cursor:pointer; transition:all 0.2s;
+}
+.btn-primary {
+  background:var(--oak); color:white; flex:1;
+}
+.btn-primary:hover { background:var(--oak-deep); transform:translateY(-1px); box-shadow:var(--shadow-sm); }
+.btn-primary:disabled { background:#c8b89a; cursor:not-allowed; transform:none; }
+.btn-ghost {
+  background:none; border:1.5px solid var(--border);
+  color:var(--text-soft); padding:14px 20px;
+}
+.btn-ghost:hover { border-color:var(--oak); color:var(--oak); }
+
+/* PAY BUTTON */
+.btn-pay {
+  width:100%;
+  background:linear-gradient(135deg, var(--oak-deep), var(--oak));
+  color:white; padding:16px;
+  border-radius:30px; border:none;
+  font-size:15px; font-weight:600; letter-spacing:0.12em;
+  cursor:pointer; transition:all 0.2s;
+  display:flex; align-items:center; justify-content:center; gap:8px;
+}
+.btn-pay:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(90,60,20,0.25); }
+.btn-pay:disabled { background:#c8b89a; cursor:not-allowed; transform:none; box-shadow:none; }
+
+/* LOADING OVERLAY */
+.loading-overlay {
+  display:none; position:fixed; inset:0;
+  background:rgba(250,247,242,0.92);
+  z-index:999; flex-direction:column;
+  align-items:center; justify-content:center; gap:16px;
+}
+.loading-overlay.show { display:flex; }
+.spinner {
+  width:44px; height:44px;
+  border:3px solid var(--border);
+  border-top-color:var(--oak);
+  border-radius:50%;
+  animation:spin 0.8s linear infinite;
+}
+@keyframes spin { to{transform:rotate(360deg)} }
+.loading-text { font-size:14px; color:var(--text-soft); letter-spacing:0.1em; }
+
+/* ERROR */
+.error-msg {
+  background:#fef2f2; border:1px solid #fca5a5;
+  color:#991b1b; border-radius:8px;
+  padding:10px 14px; font-size:13px;
+  margin-bottom:14px; display:none;
+}
+.error-msg.show { display:block; }
+
+/* TERMS */
+.terms-note {
+  font-size:11px; color:var(--muted); text-align:center;
+  margin-top:12px; line-height:1.8;
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <span class="nav-logo">有緣居共享空間</span>
+  <a href="index.html" class="nav-back">← 返回首頁</a>
+</nav>
+
+<!-- PROGRESS BAR -->
+<div class="progress-wrap">
+  <div class="progress-inner">
+    <div class="progress-steps">
+      <div class="progress-fill" id="progress-fill" style="width:0%"></div>
+      <div class="step-dot active" id="dot-1">1</div>
+      <div class="step-dot" id="dot-2">2</div>
+      <div class="step-dot" id="dot-3">3</div>
+    </div>
+    <div class="step-labels">
+      <div class="step-label active" id="lbl-1">選擇方案</div>
+      <div class="step-label" id="lbl-2">選擇時間</div>
+      <div class="step-label" id="lbl-3">確認付款</div>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+  <!-- ===== STEP 1: 選擇方案 ===== -->
+  <div class="step-panel active" id="step-1">
+    <h2 class="step-title">選擇空間與方案</h2>
+    <p class="step-sub">依照你的用途選擇合適的空間</p>
+
+    <!-- Space tabs -->
+    <div class="space-tabs">
+      <div class="space-tab active" id="tab-front" onclick="selectSpace('front')">
+        <div class="space-tab-icon">🏢</div>
+        <div class="space-tab-label">前段空間</div>
+        <div class="space-tab-sub">洽談 ‧ 桌遊 ‧ 會議</div>
+      </div>
+      <div class="space-tab" id="tab-back" onclick="selectSpace('back')">
+        <div class="space-tab-icon">🧘</div>
+        <div class="space-tab-label">後段工作室</div>
+        <div class="space-tab-sub">瑜伽 ‧ 課程 ‧ 治療</div>
+      </div>
+    </div>
+
+    <!-- Front space packages -->
+    <div id="pkgs-front">
+      <div class="pkg-grid">
+        <div class="pkg-card" onclick="selectPkg(this,'前段-洽談1hr','前段 洽談包場 1小時',150,60,'洽談/業務/會議')">
+          <div class="pkg-name">洽談包場 1 小時</div>
+          <div class="pkg-desc">保險、業務、輕商務洽談，含白板投影</div>
+          <div class="pkg-price">$150<span class="pkg-price-unit"> /次</span></div>
+        </div>
+        <div class="pkg-card" onclick="selectPkg(this,'前段-洽談2hr','前段 洽談包場 2小時',300,120,'洽談/業務/會議')">
+          <div class="pkg-name">洽談包場 2 小時</div>
+          <div class="pkg-desc">較長洽談或小型討論，最受歡迎方案</div>
+          <div class="pkg-price">$300<span class="pkg-price-unit"> /次</span></div>
+        </div>
+        <div class="pkg-card" onclick="selectPkg(this,'前段-半天','前段 半天包場 4小時',550,240,'教育訓練/講座/多場洽談')">
+          <div class="pkg-name">半天包場 4 小時</div>
+          <div class="pkg-desc">適合小型講座、連續多場洽談</div>
+          <div class="pkg-price">$550<span class="pkg-price-unit"> /次</span></div>
+        </div>
+        <div class="pkg-card" onclick="selectPkg(this,'前段-全天','前段 全天包場 8小時',950,480,'全日包場/活動')">
+          <div class="pkg-name">全天包場 8 小時</div>
+          <div class="pkg-desc">全日使用，最划算日租方案</div>
+          <div class="pkg-price">$950<span class="pkg-price-unit"> /次</span></div>
+        </div>
+        <div class="pkg-card" id="pkg-boardgame" onclick="selectPkg(this,'前段-桌遊','前段 假日桌遊',80,120,'桌遊/休閒')">
+          <div class="pkg-name">假日桌遊 🎲</div>
+          <div class="pkg-desc">泡茶咖啡免費借用，4人以上 9 折（假日限定）</div>
+          <div class="pkg-price">$80<span class="pkg-price-unit"> /人/hr</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Back space packages -->
+    <div id="pkgs-back" style="display:none">
+      <div class="pkg-grid">
+        <div class="pkg-card" onclick="selectPkg(this,'後段-課程60','後段 課程租用 60分鐘',350,60,'瑜伽/皮拉提斯/小團體課')">
+          <div class="pkg-name">課程租用 60 分鐘</div>
+          <div class="pkg-desc">瑜伽、皮拉提斯、小團體課程，含鏡牆音響</div>
+          <div class="pkg-price">$350<span class="pkg-price-unit"> /堂</span></div>
+        </div>
+        <div class="pkg-card" onclick="selectPkg(this,'後段-課程90','後段 課程租用 90分鐘',450,90,'瑜伽/皮拉提斯/小團體課')">
+          <div class="pkg-name">課程租用 90 分鐘</div>
+          <div class="pkg-desc">適合較長課程或含暖身收操的完整課</div>
+          <div class="pkg-price">$450<span class="pkg-price-unit"> /堂</span></div>
+        </div>
+        <div class="pkg-card" onclick="selectPkg(this,'後段-治療','後段 治療空間 60分鐘',300,60,'徒手治療/整復/物理治療')">
+          <div class="pkg-name">治療空間 60 分鐘</div>
+          <div class="pkg-desc">徒手治療、整復，含治療床及安靜環境</div>
+          <div class="pkg-price">$300<span class="pkg-price-unit"> /次</span></div>
+        </div>
+        <div class="pkg-card" onclick="alert('月租方案請直接 LINE 私訊 @goenstay 洽詢，我們會提供專屬優惠 🙏')">
+          <div class="pkg-name">月租方案 📋</div>
+          <div class="pkg-desc">固定時段 8/12 堂，最划算長期合作方案</div>
+          <div class="pkg-price" style="font-size:15px">$2,500起<span class="pkg-price-unit"> /月</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="btn-row" style="margin-top:24px">
+      <button class="btn btn-primary" id="btn-step1" onclick="goStep(2)" disabled>下一步：選擇時間 →</button>
+    </div>
+  </div>
+
+  <!-- ===== STEP 2: 選擇時間 ===== -->
+  <div class="step-panel" id="step-2">
+    <h2 class="step-title">選擇日期與時間</h2>
+    <p class="step-sub">請選擇你希望使用的日期與開始時間</p>
+
+    <div id="weekend-notice" class="notice" style="display:none">
+      ⚠️ 假日（六日）營業 10:00–20:00，假日桌遊方案僅限假日預約
+    </div>
+    <div id="boardgame-notice" class="notice" style="display:none">
+      🎲 假日桌遊僅限週六、週日預約，請選擇假日日期
+    </div>
+
+    <div class="datetime-grid">
+      <div class="field">
+        <label class="field-label">日期<span class="req">*</span></label>
+        <input type="date" id="book-date" onchange="onDateChange()">
+      </div>
+      <div class="field">
+        <label class="field-label">開始時間<span class="req">*</span></label>
+        <select id="book-start" onchange="calcEndTime()">
+          <option value="">請先選擇日期</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="field" id="end-time-field">
+      <label class="field-label">結束時間</label>
+      <input type="text" id="book-end" readonly placeholder="依方案自動計算" style="background:#f8f4ec; color:var(--muted)">
+    </div>
+
+    <!-- 人數選擇（僅桌遊） -->
+    <div class="field" id="people-field" style="display:none">
+      <label class="field-label">人數<span class="req">*</span>（桌遊按人頭計費）</label>
+      <div class="people-control">
+        <button class="people-btn" onclick="changePeople(-1)">−</button>
+        <span class="people-count" id="people-count">2</span>
+        <button class="people-btn" onclick="changePeople(1)">+</button>
+        <span style="font-size:13px; color:var(--muted)">人，$80/人/hr</span>
+      </div>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn btn-ghost" onclick="goStep(1)">← 上一步</button>
+      <button class="btn btn-primary" id="btn-step2" onclick="goStep(3)" disabled>下一步：填寫資料 →</button>
+    </div>
+  </div>
+
+  <!-- ===== STEP 3: 填寫資料 + 確認付款 ===== -->
+  <div class="step-panel" id="step-3">
+    <h2 class="step-title">填寫資料並付款</h2>
+    <p class="step-sub">確認訂單詳情後前往綠界付款</p>
+
+    <!-- 訂單摘要 -->
+    <div class="summary-card">
+      <div class="summary-title">📋 訂單摘要</div>
+      <div class="summary-row"><span class="key">空間 / 方案</span><span class="val" id="sum-pkg">—</span></div>
+      <div class="summary-row"><span class="key">日期</span><span class="val" id="sum-date">—</span></div>
+      <div class="summary-row"><span class="key">時間</span><span class="val" id="sum-time">—</span></div>
+      <div class="summary-row" id="sum-people-row" style="display:none"><span class="key">人數</span><span class="val" id="sum-people">—</span></div>
+      <div class="summary-total">
+        <span class="key">應付金額</span>
+        <span class="val">NT$<span id="sum-amount">0</span></span>
+      </div>
+    </div>
+
+    <!-- 個人資料 -->
+    <div class="field-row">
+      <div class="field">
+        <label class="field-label">姓名<span class="req">*</span></label>
+        <input type="text" id="f-name" placeholder="你的姓名">
+      </div>
+      <div class="field">
+        <label class="field-label">手機<span class="req">*</span></label>
+        <input type="tel" id="f-phone" placeholder="09xx-xxx-xxx">
+      </div>
+    </div>
+    <div class="field">
+      <label class="field-label">LINE ID</label>
+      <input type="text" id="f-line" placeholder="用於發送門鎖密碼（建議填寫）">
+      <div class="field-hint">⚡ 預約成功後，使用前 1 小時會透過 LINE 發送門鎖密碼</div>
+    </div>
+    <div class="field">
+      <label class="field-label">用途說明</label>
+      <textarea id="f-notes" placeholder="例：保險洽談 3 人、瑜伽課 5 人...（選填）"></textarea>
+    </div>
+
+    <div class="error-msg" id="error-msg">請填寫必填欄位（姓名、手機）</div>
+
+    <button class="btn-pay" id="btn-pay" onclick="submitBooking()">
+      🔒 前往綠界付款 NT$<span id="pay-amount">0</span>
+    </button>
+    <p class="terms-note">
+      付款完成後系統自動確認預約，LINE 傳送確認通知。<br>
+      取消規則：48hr前全退｜24hr前退50%｜12hr內不退
+    </p>
+
+    <div class="btn-row" style="margin-top:16px; justify-content:center">
+      <button class="btn btn-ghost" onclick="goStep(2)" style="flex:none">← 修改時間</button>
+    </div>
+  </div>
+
+</div><!-- /main -->
+
+<!-- LOADING OVERLAY -->
+<div class="loading-overlay" id="loading">
+  <div class="spinner"></div>
+  <div class="loading-text">正在跳轉至付款頁面...</div>
+</div>
+
+<script>
+// ===== STATE =====
+const state = {
+  space: 'front',
+  pkgKey: '',
+  pkgName: '',
+  price: 0,
+  duration: 0, // minutes
+  purpose: '',
+  date: '',
+  startTime: '',
+  endTime: '',
+  people: 2,
+  currentStep: 1,
+};
+
+// ===== STEP NAVIGATION =====
+function goStep(n) {
+  if (n === 2 && !state.pkgKey) return;
+  if (n === 3) {
+    if (!state.date || !state.startTime) return;
+    if (state.pkgKey === '前段-桌遊') {
+      const d = new Date(state.date + 'T00:00:00');
+      const day = d.getDay();
+      if (day === 0 || day === 6) {
+        // OK
+      } else {
+        alert('假日桌遊僅限週六、週日預約，請重新選擇日期');
+        return;
+      }
+    }
+    updateSummary();
+  }
+  document.getElementById(`step-${state.currentStep}`).classList.remove('active');
+  document.getElementById(`step-${n}`).classList.add('active');
+  state.currentStep = n;
+  updateProgress();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function updateProgress() {
+  const n = state.currentStep;
+  const fills = [0, 0, 50, 100];
+  document.getElementById('progress-fill').style.width = fills[n] + '%';
+  for (let i = 1; i <= 3; i++) {
+    const dot = document.getElementById(`dot-${i}`);
+    const lbl = document.getElementById(`lbl-${i}`);
+    dot.className = 'step-dot' + (i < n ? ' done' : i === n ? ' active' : '');
+    lbl.className = 'step-label' + (i === n ? ' active' : '');
+    if (i < n) dot.innerHTML = '✓';
+    else dot.innerHTML = i;
+  }
+}
+
+// ===== SPACE SELECTION =====
+function selectSpace(sp) {
+  state.space = sp;
+  state.pkgKey = '';
+  document.getElementById('tab-front').className = 'space-tab' + (sp==='front'?' active':'');
+  document.getElementById('tab-back').className  = 'space-tab' + (sp==='back' ?' active':'');
+  document.getElementById('pkgs-front').style.display = sp==='front'?'':'none';
+  document.getElementById('pkgs-back').style.display  = sp==='back' ?'':'none';
+  document.querySelectorAll('.pkg-card').forEach(c => c.classList.remove('selected'));
+  document.getElementById('btn-step1').disabled = true;
+}
+
+// ===== PACKAGE SELECTION =====
+function selectPkg(el, key, name, price, duration, purpose) {
+  if (key === '月租方案') return;
+  document.querySelectorAll('.pkg-card').forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected');
+  state.pkgKey = key; state.pkgName = name;
+  state.price = price; state.duration = duration; state.purpose = purpose;
+  document.getElementById('btn-step1').disabled = false;
+
+  // 桌遊 notice
+  const isBoardgame = key === '前段-桌遊';
+  document.getElementById('boardgame-notice').style.display = isBoardgame ? '' : 'none';
+}
+
+// ===== DATE & TIME =====
+function onDateChange() {
+  const d = document.getElementById('book-date').value;
+  state.date = d;
+  state.startTime = '';
+  state.endTime = '';
+
+  if (!d) return;
+  const dateObj = new Date(d + 'T00:00:00');
+  const day = dateObj.getDay();
+  const isWeekend = day === 0 || day === 6;
+
+  document.getElementById('weekend-notice').style.display = isWeekend ? '' : 'none';
+
+  // Generate time slots
+  const sel = document.getElementById('book-start');
+  sel.innerHTML = '<option value="">請選擇開始時間</option>';
+
+  const startH = isWeekend ? 10 : 9;
+  const endH   = isWeekend ? 20 : 21;
+
+  // calc max start based on duration
+  const durationHours = state.duration / 60;
+  const maxStartH = endH - durationHours;
+
+  for (let h = startH; h <= maxStartH; h++) {
+    for (let m = 0; m < 60; m += 30) {
+      if (h + durationHours + m/60 > endH) break;
+      const time = `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}`;
+      sel.innerHTML += `<option value="${time}">${time}</option>`;
+    }
+  }
+
+  document.getElementById('book-end').value = '';
+  checkStep2();
+}
+
+function calcEndTime() {
+  const start = document.getElementById('book-start').value;
+  if (!start) { state.startTime=''; checkStep2(); return; }
+  state.startTime = start;
+  const [h, m] = start.split(':').map(Number);
+  const totalMins = h*60 + m + state.duration;
+  const eh = Math.floor(totalMins/60);
+  const em = totalMins%60;
+  state.endTime = `${String(eh).padStart(2,'0')}:${String(em).padStart(2,'0')}`;
+  document.getElementById('book-end').value = state.endTime;
+
+  // 桌遊 show people
+  document.getElementById('people-field').style.display = state.pkgKey==='前段-桌遊' ? '' : 'none';
+  checkStep2();
+}
+
+function checkStep2() {
+  document.getElementById('btn-step2').disabled = !(state.date && state.startTime);
+}
+
+// ===== PEOPLE (桌遊) =====
+function changePeople(delta) {
+  state.people = Math.max(1, Math.min(20, state.people + delta));
+  document.getElementById('people-count').textContent = state.people;
+}
+
+// ===== SUMMARY =====
+function calcAmount() {
+  if (state.pkgKey === '前段-桌遊') {
+    return state.price * state.people * (state.duration / 60);
+  }
+  return state.price;
+}
+
+function updateSummary() {
+  const amt = calcAmount();
+  const dateStr = state.date ? new Date(state.date+'T00:00:00').toLocaleDateString('zh-TW',{year:'numeric',month:'long',day:'numeric',weekday:'short'}) : '—';
+  document.getElementById('sum-pkg').textContent  = state.pkgName || '—';
+  document.getElementById('sum-date').textContent = dateStr;
+  document.getElementById('sum-time').textContent = state.startTime && state.endTime ? `${state.startTime} – ${state.endTime}` : '—';
+  if (state.pkgKey === '前段-桌遊') {
+    document.getElementById('sum-people-row').style.display = '';
+    document.getElementById('sum-people').textContent = `${state.people} 人`;
+  } else {
+    document.getElementById('sum-people-row').style.display = 'none';
+  }
+  document.getElementById('sum-amount').textContent = amt.toLocaleString();
+  document.getElementById('pay-amount').textContent = amt.toLocaleString();
+}
+
+// ===== SUBMIT =====
+async function submitBooking() {
+  const name  = document.getElementById('f-name').value.trim();
+  const phone = document.getElementById('f-phone').value.trim();
+  const line  = document.getElementById('f-line').value.trim();
+  const notes = document.getElementById('f-notes').value.trim();
+  const errEl = document.getElementById('error-msg');
+
+  if (!name || !phone) {
+    errEl.classList.add('show');
+    return;
+  }
+  errEl.classList.remove('show');
+
+  const amount = calcAmount();
+
+  const payload = {
+    name, phone, lineId: line,
+    space: state.space === 'front' ? '前段' : '後段',
+    pkgKey: state.pkgKey,
+    pkgName: state.pkgName,
+    date: state.date,
+    startTime: state.startTime,
+    endTime: state.endTime,
+    duration: `${state.duration}分鐘`,
+    people: state.pkgKey === '前段-桌遊' ? state.people : null,
+    amount,
+    purpose: state.purpose,
+    notes,
+  };
+
+  document.getElementById('loading').classList.add('show');
+  document.getElementById('btn-pay').disabled = true;
+
+  try {
+    const res = await fetch('/api/create-payment', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+
+    if (!res.ok) throw new Error('付款建立失敗，請稍後再試');
+
+    const html = await res.text();
+    document.open();
+    document.write(html);
+    document.close();
+  } catch (err) {
+    document.getElementById('loading').classList.remove('show');
+    document.getElementById('btn-pay').disabled = false;
+    errEl.textContent = err.message || '發生錯誤，請重新整理後再試';
+    errEl.classList.add('show');
+  }
+}
+
+// ===== INIT =====
+(function init() {
+  // Set min date to today
+  const today = new Date().toISOString().split('T')[0];
+  document.getElementById('book-date').min = today;
+  // Set default space
+  selectSpace('front');
+})();
+</script>
+</body>
+</html>

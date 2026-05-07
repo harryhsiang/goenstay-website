@@ -1,0 +1,1171 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>有緣居共享空間｜清水區海線 ‧ 多功能場地租借</title>
+<meta name="description" content="台中清水區海線在地共享空間，前段多功能洽談區、後段瑜伽治療工作室。提供保險洽談、瑜伽課程、徒手治療、假日桌遊、月租等彈性方案。線上預約、自助入場。地址：台中市清水區五權路37號。">
+<meta name="theme-color" content="#8a5c2e">
+
+<!-- Open Graph -->
+<meta property="og:title" content="有緣居共享空間｜清水海線在地多功能場地">
+<meta property="og:description" content="洽談 ‧ 課程 ‧ 治療 ‧ 桌遊 ‧ 月租，線上預約自助入場。">
+<meta property="og:type" content="website">
+
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --oak: #8a5c2e;
+  --oak-deep: #6a3e18;
+  --oak-light: #c8a060;
+  --oak-bg: #f5f0e8;
+  --cream: #faf7f2;
+  --warm-white: #fff9f2;
+  --sand: #e8dcc8;
+  --border: #ddd0b8;
+  --border-light: #ece2cf;
+  --text: #3a3228;
+  --text-soft: #5a5040;
+  --muted: #8a7e6e;
+  --green: #5a7a50;
+  --teal: #4a8a7a;
+  --shadow-sm: 0 2px 8px rgba(90,60,20,0.06);
+  --shadow: 0 4px 24px rgba(90,60,20,0.08);
+  --shadow-lg: 0 12px 40px rgba(90,60,20,0.12);
+}
+* { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+html { scroll-behavior:smooth; }
+body {
+  background:var(--oak-bg);
+  font-family:'Noto Sans TC',sans-serif;
+  color:var(--text);
+  line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+}
+img { max-width:100%; display:block; }
+a { color:inherit; text-decoration:none; }
+button { font-family:inherit; cursor:pointer; }
+
+/* ========== NAV ========== */
+.nav {
+  background:rgba(255,249,242,0.92);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom:1px solid var(--border-light);
+  padding:0 clamp(16px, 4vw, 40px);
+  display:flex; align-items:center; justify-content:space-between;
+  height:64px;
+  position:sticky; top:0; z-index:100;
+}
+.nav-brand { display:flex; flex-direction:column; gap:2px; }
+.nav-logo {
+  font-family:'Noto Serif TC',serif;
+  font-size:17px; font-weight:400; color:var(--oak);
+  letter-spacing:0.12em;
+}
+.nav-sub { font-size:10px; color:var(--muted); letter-spacing:0.18em; }
+.nav-links { display:flex; gap:28px; align-items:center; }
+.nav-links a {
+  font-size:13px; color:var(--text-soft); letter-spacing:0.05em;
+  transition:color 0.2s;
+}
+.nav-links a:hover { color:var(--oak); }
+.nav-cta {
+  background:var(--oak); color:white;
+  font-size:12px; padding:9px 18px; border-radius:22px;
+  letter-spacing:0.1em; border:none;
+  transition:transform 0.15s, box-shadow 0.2s;
+}
+.nav-cta:hover { transform:translateY(-1px); box-shadow:var(--shadow-sm); }
+.nav-toggle { display:none; background:none; border:none; font-size:22px; color:var(--oak); }
+@media (max-width:780px) {
+  .nav-links { display:none; }
+  .nav-toggle { display:block; }
+  .nav-cta { padding:8px 14px; font-size:11px; }
+}
+
+/* ========== HERO ========== */
+.hero {
+  position:relative;
+  background:
+    radial-gradient(circle at 20% 80%, rgba(200,160,96,0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(106,62,24,0.1) 0%, transparent 50%),
+    linear-gradient(135deg, #6a3e18 0%, #8a5c2e 45%, #c8a060 100%);
+  color:white;
+  padding: clamp(56px, 9vw, 120px) clamp(20px, 5vw, 60px) clamp(64px, 10vw, 140px);
+  overflow:hidden;
+}
+.hero::before {
+  content:''; position:absolute; inset:0;
+  background-image:
+    repeating-linear-gradient(135deg, transparent 0 30px, rgba(255,255,255,0.02) 30px 31px);
+  pointer-events:none;
+}
+.hero-inner { max-width:1100px; margin:0 auto; position:relative; z-index:1; }
+.hero-tag {
+  font-size:11px; letter-spacing:0.4em; color:rgba(255,255,255,0.7);
+  margin-bottom:18px; font-weight:300;
+}
+.hero h1 {
+  font-family:'Noto Serif TC',serif;
+  font-size: clamp(28px, 5.5vw, 54px);
+  font-weight:300;
+  letter-spacing:0.06em;
+  line-height:1.4;
+  margin-bottom:18px;
+  max-width:780px;
+}
+.hero h1 .accent { color:#f0d8a8; font-weight:400; }
+.hero-lead {
+  font-size: clamp(13px, 1.6vw, 16px);
+  color:rgba(255,255,255,0.85);
+  letter-spacing:0.06em;
+  line-height:2;
+  max-width:620px;
+  margin-bottom:32px;
+}
+.hero-tags { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:36px; }
+.hero-badge {
+  background:rgba(255,255,255,0.12);
+  border:1px solid rgba(255,255,255,0.25);
+  color:white;
+  font-size:11px; padding:6px 14px; border-radius:20px;
+  letter-spacing:0.12em;
+}
+.hero-actions { display:flex; gap:12px; flex-wrap:wrap; }
+.btn {
+  display:inline-flex; align-items:center; gap:8px;
+  padding:14px 26px; border-radius:30px;
+  font-size:13px; letter-spacing:0.12em; font-weight:500;
+  border:none; transition:all 0.2s; text-decoration:none;
+}
+.btn-primary {
+  background:white; color:var(--oak-deep);
+}
+.btn-primary:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(0,0,0,0.15); }
+.btn-ghost {
+  background:rgba(255,255,255,0.12);
+  border:1px solid rgba(255,255,255,0.35);
+  color:white; backdrop-filter:blur(4px);
+}
+.btn-ghost:hover { background:rgba(255,255,255,0.2); }
+
+/* hero stats strip */
+.hero-stats {
+  display:grid; grid-template-columns:repeat(4,1fr); gap:1px;
+  margin-top:48px;
+  background:rgba(255,255,255,0.15);
+  border-radius:12px;
+  overflow:hidden;
+}
+.hero-stat {
+  background:linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+  padding:18px 12px; text-align:center;
+}
+.hero-stat-num {
+  font-family:'Noto Serif TC',serif;
+  font-size:22px; font-weight:400; color:#f0d8a8;
+}
+.hero-stat-label {
+  font-size:10px; color:rgba(255,255,255,0.7);
+  letter-spacing:0.15em; margin-top:2px;
+}
+@media (max-width:600px) {
+  .hero-stats { grid-template-columns:repeat(2,1fr); }
+}
+
+/* ========== SECTIONS ========== */
+section { padding: clamp(56px, 8vw, 100px) clamp(20px, 5vw, 60px); }
+.container { max-width:1100px; margin:0 auto; }
+
+.section-head { text-align:center; margin-bottom:48px; }
+.section-eyebrow {
+  font-size:10px; letter-spacing:0.4em; color:var(--oak);
+  text-transform:uppercase; margin-bottom:10px; font-weight:500;
+}
+.section-title {
+  font-family:'Noto Serif TC',serif;
+  font-size: clamp(22px, 3.5vw, 34px);
+  font-weight:400; color:var(--text);
+  letter-spacing:0.05em;
+  line-height:1.5;
+}
+.section-sub {
+  font-size:13px; color:var(--muted);
+  margin-top:10px; letter-spacing:0.05em;
+  max-width:560px; margin-left:auto; margin-right:auto;
+}
+
+/* ========== ABOUT ========== */
+.about {
+  background:var(--cream);
+  border-bottom:1px solid var(--border-light);
+}
+.about-grid {
+  display:grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: clamp(28px, 5vw, 60px);
+  align-items:center;
+}
+@media (max-width:820px) { .about-grid { grid-template-columns:1fr; } }
+.about-eyebrow { font-size:10px; letter-spacing:0.4em; color:var(--oak); margin-bottom:14px; font-weight:500; }
+.about h2 {
+  font-family:'Noto Serif TC',serif;
+  font-size: clamp(22px, 3.5vw, 32px);
+  font-weight:400; line-height:1.6;
+  margin-bottom:22px; color:var(--text);
+  letter-spacing:0.05em;
+}
+.about p {
+  font-size:14px; color:var(--text-soft);
+  line-height:2.05; margin-bottom:14px;
+}
+.about-quote {
+  border-left:3px solid var(--oak-light);
+  padding:8px 0 8px 18px;
+  margin-top:22px;
+  font-family:'Noto Serif TC',serif;
+  font-style:italic;
+  color:var(--oak);
+  font-size:15px;
+  line-height:1.9;
+}
+.about-img {
+  position:relative;
+  border-radius:14px;
+  overflow:hidden;
+  aspect-ratio: 4/5;
+  background:
+    linear-gradient(135deg, rgba(138,92,46,0.12), rgba(200,160,96,0.18)),
+    repeating-linear-gradient(45deg, #d4b890 0 8px, #c8a878 8px 16px);
+  box-shadow:var(--shadow-lg);
+}
+.about-img-overlay {
+  position:absolute; inset:0;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  background:linear-gradient(135deg, rgba(106,62,24,0.55), rgba(138,92,46,0.4));
+  color:white; text-align:center; padding:32px;
+}
+.about-img-overlay .icon {
+  font-size:46px; margin-bottom:14px; opacity:0.85;
+}
+.about-img-overlay h4 {
+  font-family:'Noto Serif TC',serif;
+  font-size:18px; font-weight:300;
+  letter-spacing:0.15em; margin-bottom:6px;
+}
+.about-img-overlay p {
+  font-size:11px; letter-spacing:0.1em;
+  color:rgba(255,255,255,0.8); margin:0;
+}
+
+/* ========== SPACES ========== */
+.spaces { background:var(--oak-bg); }
+.space-grid {
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:24px;
+}
+@media (max-width:820px) { .space-grid { grid-template-columns:1fr; } }
+
+.space-card {
+  background:white;
+  border:1px solid var(--border);
+  border-radius:16px;
+  overflow:hidden;
+  box-shadow:var(--shadow-sm);
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+.space-card:hover { transform:translateY(-4px); box-shadow:var(--shadow); }
+.space-cover {
+  height:200px;
+  position:relative;
+  display:flex; align-items:flex-end; padding:20px;
+}
+.space-cover.front {
+  background:
+    linear-gradient(0deg, rgba(106,62,24,0.7), rgba(138,92,46,0.2)),
+    linear-gradient(135deg, #c8a060, #8a5c2e);
+}
+.space-cover.back {
+  background:
+    linear-gradient(0deg, rgba(58,106,80,0.7), rgba(74,138,122,0.2)),
+    linear-gradient(135deg, #78c898, #3a6a50);
+}
+.space-cover-tag {
+  position:absolute; top:16px; right:16px;
+  background:rgba(255,255,255,0.9);
+  font-size:10px; padding:5px 11px; border-radius:14px;
+  color:var(--oak); letter-spacing:0.12em;
+}
+.space-cover-icon {
+  position:absolute; top:16px; left:18px;
+  font-size:28px; opacity:0.8;
+}
+.space-cover h3 {
+  color:white;
+  font-family:'Noto Serif TC',serif;
+  font-size:22px; font-weight:400;
+  letter-spacing:0.08em;
+}
+.space-body { padding:20px 22px 24px; }
+.space-desc {
+  font-size:13px; color:var(--text-soft);
+  line-height:1.95; margin-bottom:14px;
+}
+.space-feats {
+  display:flex; flex-wrap:wrap; gap:6px;
+  margin-bottom:18px;
+}
+.feat-chip {
+  background:var(--oak-bg);
+  border:1px solid var(--border);
+  font-size:11px; color:var(--text-soft);
+  padding:5px 11px; border-radius:14px;
+  letter-spacing:0.05em;
+}
+.space-prices {
+  border-top:1px solid var(--border-light);
+  padding-top:14px; margin-bottom:18px;
+}
+.space-price-row {
+  display:flex; justify-content:space-between; align-items:center;
+  font-size:12.5px; padding:6px 0;
+}
+.space-price-row .l { color:var(--muted); }
+.space-price-row .r { color:var(--oak); font-weight:500; }
+.space-cta {
+  display:inline-flex; align-items:center; gap:6px;
+  font-size:12px; color:var(--oak); font-weight:500;
+  letter-spacing:0.1em;
+  padding:9px 18px; border-radius:22px;
+  border:1px solid var(--oak-light);
+  transition:all 0.2s;
+}
+.space-cta:hover { background:var(--oak); color:white; border-color:var(--oak); }
+.space-card.back .space-cta { color:var(--green); border-color:#78c898; }
+.space-card.back .space-cta:hover { background:var(--green); color:white; border-color:var(--green); }
+
+/* ========== TARGET / 適合誰 ========== */
+.targets { background:var(--cream); border-top:1px solid var(--border-light); border-bottom:1px solid var(--border-light); }
+.target-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
+  gap:18px;
+}
+.target-card {
+  background:white;
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:24px 20px;
+  text-align:left;
+  transition:transform 0.2s, box-shadow 0.2s;
+}
+.target-card:hover { transform:translateY(-3px); box-shadow:var(--shadow); }
+.target-icon {
+  width:44px; height:44px; border-radius:10px;
+  background:var(--oak-bg);
+  display:flex; align-items:center; justify-content:center;
+  font-size:22px; margin-bottom:14px;
+}
+.target-card h4 {
+  font-family:'Noto Serif TC',serif;
+  font-size:15px; font-weight:500; color:var(--text);
+  margin-bottom:8px; letter-spacing:0.06em;
+}
+.target-card p {
+  font-size:12px; color:var(--muted); line-height:1.95;
+}
+
+/* ========== PRICING ========== */
+.pricing { background:var(--oak-bg); }
+.price-table-wrap {
+  background:white;
+  border:1px solid var(--border);
+  border-radius:14px;
+  overflow:hidden;
+  box-shadow:var(--shadow-sm);
+}
+.price-table {
+  width:100%;
+  border-collapse:collapse;
+  font-size:13px;
+}
+.price-table th {
+  background:var(--oak-bg);
+  color:var(--oak);
+  font-weight:500;
+  text-align:left;
+  padding:14px 18px;
+  border-bottom:1px solid var(--border);
+  letter-spacing:0.1em;
+  font-size:11px;
+}
+.price-table td {
+  padding:14px 18px;
+  border-bottom:1px solid var(--border-light);
+  color:var(--text);
+  vertical-align:top;
+}
+.price-table tr:last-child td { border-bottom:none; }
+.price-table .item-name { font-weight:500; }
+.price-table .item-sub { font-size:11px; color:var(--muted); display:block; margin-top:2px; }
+.price-table .price-col { color:var(--oak); font-weight:500; white-space:nowrap; }
+.price-table .badge {
+  display:inline-block;
+  font-size:9px; padding:2px 8px; border-radius:10px;
+  background:#fdf0dc; color:#8a5c2e; border:1px solid #e8c878;
+  margin-left:6px;
+}
+.pricing-foot {
+  display:flex; justify-content:space-between; align-items:center;
+  flex-wrap:wrap; gap:12px;
+  margin-top:22px;
+}
+.pricing-note { font-size:11px; color:var(--muted); }
+@media (max-width:600px) {
+  .price-table { font-size:12px; }
+  .price-table th, .price-table td { padding:11px 12px; }
+}
+
+/* ========== PROCESS ========== */
+.process {
+  background:linear-gradient(180deg, var(--cream) 0%, var(--oak-bg) 100%);
+  border-top:1px solid var(--border-light);
+}
+.proc-grid {
+  display:grid;
+  grid-template-columns:repeat(4, 1fr);
+  gap:14px;
+  position:relative;
+}
+@media (max-width:820px) { .proc-grid { grid-template-columns:1fr 1fr; } }
+@media (max-width:480px) { .proc-grid { grid-template-columns:1fr; } }
+.proc-step {
+  background:white;
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:24px 20px;
+  position:relative;
+  text-align:left;
+}
+.proc-num {
+  font-family:'Noto Serif TC',serif;
+  font-size:38px; font-weight:300; color:var(--oak-light);
+  line-height:1; margin-bottom:10px;
+}
+.proc-step h4 {
+  font-size:14px; font-weight:500; color:var(--text);
+  margin-bottom:6px; letter-spacing:0.06em;
+}
+.proc-step p {
+  font-size:12px; color:var(--muted); line-height:1.85;
+}
+
+/* ========== FAQ ========== */
+.faq { background:var(--oak-bg); }
+.faq-list { max-width:760px; margin:0 auto; }
+.faq-item {
+  background:white;
+  border:1px solid var(--border);
+  border-radius:12px;
+  margin-bottom:10px;
+  overflow:hidden;
+}
+.faq-q {
+  width:100%; background:none; border:none;
+  padding:18px 22px; text-align:left;
+  display:flex; justify-content:space-between; align-items:center; gap:14px;
+  font-size:14px; color:var(--text); font-weight:500;
+  letter-spacing:0.05em;
+}
+.faq-q .icon {
+  width:24px; height:24px; border-radius:50%;
+  border:1px solid var(--oak-light);
+  color:var(--oak);
+  display:flex; align-items:center; justify-content:center;
+  font-size:14px; flex-shrink:0;
+  transition:transform 0.25s;
+}
+.faq-item.open .faq-q .icon { transform:rotate(45deg); }
+.faq-a {
+  max-height:0; overflow:hidden;
+  transition:max-height 0.3s ease;
+  padding:0 22px;
+  font-size:13px; color:var(--text-soft); line-height:2;
+}
+.faq-item.open .faq-a { max-height:300px; padding:0 22px 18px; }
+
+/* ========== CONTACT ========== */
+.contact {
+  background:var(--cream);
+  border-top:1px solid var(--border-light);
+}
+.contact-grid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap: clamp(24px, 4vw, 48px);
+  align-items:stretch;
+}
+@media (max-width:820px) { .contact-grid { grid-template-columns:1fr; } }
+
+.contact-card {
+  background:white;
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:32px 28px;
+}
+.contact-card h3 {
+  font-family:'Noto Serif TC',serif;
+  font-size:18px; font-weight:400; color:var(--text);
+  letter-spacing:0.08em; margin-bottom:18px;
+}
+.contact-row {
+  display:flex; align-items:flex-start; gap:14px;
+  padding:12px 0;
+  border-bottom:1px solid var(--border-light);
+}
+.contact-row:last-child { border-bottom:none; }
+.contact-icon {
+  width:36px; height:36px; border-radius:8px;
+  background:var(--oak-bg);
+  display:flex; align-items:center; justify-content:center;
+  font-size:16px; flex-shrink:0;
+}
+.contact-info { flex:1; }
+.contact-key { font-size:11px; color:var(--muted); letter-spacing:0.1em; }
+.contact-val { font-size:14px; color:var(--text); margin-top:2px; }
+.contact-val a { color:var(--oak); }
+.contact-val a:hover { text-decoration:underline; }
+
+.map-card {
+  background:white;
+  border:1px solid var(--border);
+  border-radius:14px;
+  overflow:hidden;
+  display:flex; flex-direction:column;
+}
+.map-frame {
+  flex:1; min-height:280px;
+  background:
+    linear-gradient(135deg, #d4c8a8, #b8a878),
+    repeating-linear-gradient(45deg, transparent 0 12px, rgba(255,255,255,0.05) 12px 24px);
+  position:relative;
+  display:flex; align-items:center; justify-content:center;
+  color:white; flex-direction:column; gap:8px;
+}
+.map-frame::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(circle at 50% 50%, transparent 30%, rgba(0,0,0,0.15) 100%);
+}
+.map-pin {
+  font-size:36px; position:relative; z-index:1;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.3));
+}
+.map-pin-text {
+  position:relative; z-index:1;
+  font-family:'Noto Serif TC',serif;
+  font-size:14px; letter-spacing:0.15em;
+  background:rgba(255,255,255,0.9); color:var(--oak);
+  padding:6px 14px; border-radius:16px;
+}
+.map-foot {
+  padding:18px 22px;
+  font-size:12px; color:var(--muted);
+  line-height:1.8;
+  border-top:1px solid var(--border-light);
+}
+.map-foot strong { color:var(--text); }
+
+/* ========== CTA BANNER ========== */
+.cta-banner {
+  background:linear-gradient(135deg, var(--oak-deep) 0%, var(--oak) 70%, var(--oak-light) 100%);
+  color:white;
+  padding: clamp(48px, 8vw, 80px) clamp(20px, 5vw, 60px);
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+.cta-banner::after {
+  content:''; position:absolute; inset:0;
+  background:
+    radial-gradient(circle at 10% 50%, rgba(240,216,168,0.18) 0%, transparent 40%),
+    radial-gradient(circle at 90% 50%, rgba(255,255,255,0.08) 0%, transparent 40%);
+}
+.cta-banner-inner { max-width:760px; margin:0 auto; position:relative; z-index:1; }
+.cta-banner h2 {
+  font-family:'Noto Serif TC',serif;
+  font-size: clamp(22px, 3.5vw, 32px);
+  font-weight:300; letter-spacing:0.06em;
+  line-height:1.6; margin-bottom:14px;
+}
+.cta-banner p {
+  font-size:14px; color:rgba(255,255,255,0.85);
+  letter-spacing:0.05em; margin-bottom:28px;
+}
+
+/* ========== FOOTER ========== */
+.footer {
+  background:#2a2418;
+  color:#a09080;
+  padding:48px 24px 24px;
+}
+.foot-grid {
+  max-width:1100px; margin:0 auto;
+  display:grid; grid-template-columns:2fr 1fr 1fr;
+  gap:32px;
+}
+@media (max-width:680px) { .foot-grid { grid-template-columns:1fr; } }
+.foot-brand h4 {
+  font-family:'Noto Serif TC',serif;
+  font-size:16px; color:#e8d8b8;
+  letter-spacing:0.12em; margin-bottom:6px; font-weight:400;
+}
+.foot-brand p { font-size:11px; color:#807060; letter-spacing:0.1em; margin-bottom:14px; }
+.foot-brand .desc { font-size:12px; line-height:1.95; max-width:400px; }
+.foot-col h5 {
+  font-size:11px; color:#c8a060; letter-spacing:0.2em;
+  margin-bottom:14px; font-weight:500;
+}
+.foot-col a {
+  display:block; font-size:12px; color:#a09080;
+  padding:4px 0; transition:color 0.2s;
+}
+.foot-col a:hover { color:#e8d8b8; }
+.foot-bottom {
+  max-width:1100px; margin:36px auto 0;
+  padding-top:18px;
+  border-top:1px solid #3a3022;
+  display:flex; justify-content:space-between; align-items:center;
+  flex-wrap:wrap; gap:8px;
+  font-size:11px; color:#605448; letter-spacing:0.05em;
+}
+
+/* ========== MOBILE MENU ========== */
+.mobile-menu {
+  position:fixed; inset:64px 0 0 0;
+  background:var(--cream);
+  z-index:99;
+  padding:24px;
+  transform:translateX(100%);
+  transition:transform 0.25s;
+}
+.mobile-menu.open { transform:translateX(0); }
+.mobile-menu a {
+  display:block; padding:16px 0;
+  font-size:15px; color:var(--text);
+  border-bottom:1px solid var(--border-light);
+  letter-spacing:0.08em;
+}
+
+/* ========== UTIL ========== */
+.divider {
+  width:48px; height:1px;
+  background:var(--oak-light);
+  margin:0 auto 16px;
+}
+</style>
+</head>
+<body>
+
+<!-- ========== NAV ========== -->
+<nav class="nav">
+  <div class="nav-brand">
+    <span class="nav-logo">有緣居共享空間</span>
+    <span class="nav-sub">GoenStay ‧ QINGSHUI</span>
+  </div>
+  <div class="nav-links">
+    <a href="#about">關於空間</a>
+    <a href="#spaces">空間介紹</a>
+    <a href="#pricing">收費方案</a>
+    <a href="#contact">聯絡我們</a>
+  </div>
+  <a href="booking.html" class="nav-cta">立即預約 →</a>
+  <button class="nav-toggle" onclick="toggleMenu()" aria-label="menu">≡</button>
+</nav>
+
+<!-- mobile menu -->
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#about" onclick="toggleMenu()">關於空間</a>
+  <a href="#spaces" onclick="toggleMenu()">空間介紹</a>
+  <a href="#targets" onclick="toggleMenu()">適合誰</a>
+  <a href="#pricing" onclick="toggleMenu()">收費方案</a>
+  <a href="#process" onclick="toggleMenu()">預約流程</a>
+  <a href="#faq" onclick="toggleMenu()">常見問題</a>
+  <a href="#contact" onclick="toggleMenu()">聯絡我們</a>
+  <a href="booking.html" style="color:var(--oak); font-weight:500;">立即預約 →</a>
+</div>
+
+<!-- ========== HERO ========== -->
+<header class="hero">
+  <div class="hero-inner">
+    <p class="hero-tag">GoenStay ‧ SHARED SPACE</p>
+    <h1>有緣居 ‧ 清水海線<br><span class="accent">多功能共享空間</span></h1>
+    <p class="hero-lead">
+      前段是洽談、桌遊、輕商務的彈性場域；後段是瑜伽、皮拉提斯、徒手治療的安靜工作室。<br>
+      不囉嗦的計時收費、線上預約、自助入場，留給你最舒服的使用節奏。
+    </p>
+    <div class="hero-tags">
+      <span class="hero-badge">洽談包場</span>
+      <span class="hero-badge">課程場租</span>
+      <span class="hero-badge">治療空間</span>
+      <span class="hero-badge">假日桌遊</span>
+      <span class="hero-badge">月租方案</span>
+    </div>
+    <div class="hero-actions">
+      <a href="booking.html" class="btn btn-primary">立即線上預約 →</a>
+      <a href="#spaces" class="btn btn-ghost">先看看空間</a>
+    </div>
+
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-num">2</div>
+        <div class="hero-stat-label">獨立分區</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">5+</div>
+        <div class="hero-stat-label">使用情境</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">24</div>
+        <div class="hero-stat-label">小時受理預約</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">海線</div>
+        <div class="hero-stat-label">在地經營</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ========== ABOUT ========== -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div>
+        <p class="about-eyebrow">ABOUT US</p>
+        <h2>不是咖啡廳，<br>是清水海線少見的「彈性共享場域」</h2>
+        <p>
+          開在清水區五權路的一樓店面，原本只是一個老店面。我們把它分成兩段：
+          前段做成像家裡客廳又像會議室的多功能空間，後段保留成乾淨的木地板工作室。
+        </p>
+        <p>
+          海線一帶的保險專員、業務、講師、瑜伽老師、治療師，
+          常常找不到一個既不貴、又體面、能臨時包場洽談或上課的場地。
+          有緣居，就是為這些需求而生。
+        </p>
+        <div class="about-quote">
+          「不需要花錢養咖啡廳的飲料，<br>
+          也能擁有一個專業、安靜、不被打擾的場地。」
+        </div>
+      </div>
+      <div class="about-img">
+        <div class="about-img-overlay">
+          <div class="icon">🌿</div>
+          <h4>有緣居</h4>
+          <p>GoenStay SHARED SPACE</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== SPACES ========== -->
+<section class="spaces" id="spaces">
+  <div class="container">
+    <div class="section-head">
+      <p class="section-eyebrow">OUR SPACES</p>
+      <h2 class="section-title">兩個獨立分區，互不打擾</h2>
+      <p class="section-sub">前段熱鬧、後段安靜，可以同時運作，也能各自月租包場</p>
+    </div>
+
+    <div class="space-grid">
+
+      <div class="space-card front">
+        <div class="space-cover front">
+          <span class="space-cover-icon">🏢</span>
+          <span class="space-cover-tag">前段 ‧ 開放預約</span>
+          <h3>前段　多功能空間</h3>
+        </div>
+        <div class="space-body">
+          <p class="space-desc">
+            沙發休閒區 + 會議桌 + 吧台。適合保險洽談、業務簡報、輕商務會議，
+            假日切換成泡茶、咖啡、桌遊的休閒場域。
+          </p>
+          <div class="space-feats">
+            <span class="feat-chip">會議桌 10 人</span>
+            <span class="feat-chip">無線投影</span>
+            <span class="feat-chip">白板</span>
+            <span class="feat-chip">Wi-Fi 6</span>
+            <span class="feat-chip">USB 充電</span>
+            <span class="feat-chip">自助咖啡</span>
+          </div>
+          <div class="space-prices">
+            <div class="space-price-row"><span class="l">洽談包場 2hr</span><span class="r">300 元</span></div>
+            <div class="space-price-row"><span class="l">半天 4hr</span><span class="r">550 元</span></div>
+            <div class="space-price-row"><span class="l">全天 8hr</span><span class="r">950 元</span></div>
+            <div class="space-price-row"><span class="l">假日桌遊 / 人 / hr</span><span class="r">80 元</span></div>
+          </div>
+          <a href="booking.html?space=front" class="space-cta">預約前段空間 →</a>
+        </div>
+      </div>
+
+      <div class="space-card back">
+        <div class="space-cover back">
+          <span class="space-cover-icon">🧘</span>
+          <span class="space-cover-tag">後段 ‧ 開放預約</span>
+          <h3>後段　工作室</h3>
+        </div>
+        <div class="space-body">
+          <p class="space-desc">
+            落地鏡牆、木紋地板、三扇大窗自然採光。
+            適合瑜伽、皮拉提斯、小團體課、徒手治療、整復——含治療床與藍芽音響。
+          </p>
+          <div class="space-feats">
+            <span class="feat-chip">落地鏡牆</span>
+            <span class="feat-chip">SPC 防潮地板</span>
+            <span class="feat-chip">大窗採光</span>
+            <span class="feat-chip">藍芽音響</span>
+            <span class="feat-chip">治療床</span>
+            <span class="feat-chip">瑜伽墊</span>
+          </div>
+          <div class="space-prices">
+            <div class="space-price-row"><span class="l">課程 60 分鐘</span><span class="r">350 元</span></div>
+            <div class="space-price-row"><span class="l">課程 90 分鐘</span><span class="r">450 元</span></div>
+            <div class="space-price-row"><span class="l">治療 60 分鐘</span><span class="r">300 元</span></div>
+            <div class="space-price-row"><span class="l">月租 8 / 12 堂</span><span class="r">2,500 / 3,500 元</span></div>
+          </div>
+          <a href="booking.html?space=back" class="space-cta">預約後段工作室 →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ========== TARGETS ========== -->
+<section class="targets" id="targets">
+  <div class="container">
+    <div class="section-head">
+      <p class="section-eyebrow">WHO IT'S FOR</p>
+      <h2 class="section-title">這些情境，有緣居都能接</h2>
+      <p class="section-sub">不論你是哪一種使用者，都能找到合適的方案</p>
+    </div>
+
+    <div class="target-grid">
+      <div class="target-card">
+        <div class="target-icon">📋</div>
+        <h4>保險 / 業務洽談</h4>
+        <p>不被打擾的會議桌、投影白板可用，比咖啡廳體面、比辦公室彈性。</p>
+      </div>
+      <div class="target-card">
+        <div class="target-icon">🧘‍♀️</div>
+        <h4>瑜伽 / 皮拉提斯老師</h4>
+        <p>後段木地板工作室含鏡牆、音響，月租固定時段有優惠方案。</p>
+      </div>
+      <div class="target-card">
+        <div class="target-icon">💆</div>
+        <h4>治療師 / 整復師</h4>
+        <p>含治療床與毛巾的安靜空間，可按時段或月租 20/40 小時。</p>
+      </div>
+      <div class="target-card">
+        <div class="target-icon">🎓</div>
+        <h4>講師 / 小型講座</h4>
+        <p>可容納 10–15 人小型課程或讀書會，含 Wi-Fi、投影、麥克風加購。</p>
+      </div>
+      <div class="target-card">
+        <div class="target-icon">💻</div>
+        <h4>自由工作者</h4>
+        <p>單人計時或日票方案，海線少有的安靜長駐工作位。</p>
+      </div>
+      <div class="target-card">
+        <div class="target-icon">🎲</div>
+        <h4>假日桌遊聚會</h4>
+        <p>假日限定方案，泡茶、咖啡、桌遊免費借用，4 人同行 9 折。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== PRICING ========== -->
+<section class="pricing" id="pricing">
+  <div class="container">
+    <div class="section-head">
+      <p class="section-eyebrow">PRICING</p>
+      <h2 class="section-title">收費方案總覽</h2>
+      <p class="section-sub">假日加成 +15%　｜　含 Wi-Fi、投影、白板使用</p>
+    </div>
+
+    <div class="price-table-wrap">
+      <table class="price-table">
+        <thead>
+          <tr>
+            <th>使用類型</th>
+            <th>適用對象</th>
+            <th>計費方式</th>
+            <th style="text-align:right;">建議收費</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <span class="item-name">洽談包場 <span class="badge">主力</span></span>
+              <span class="item-sub">保險 / 旅遊 / 婚媒</span>
+            </td>
+            <td>業務、媒合師</td>
+            <td>每小時 / 半天 / 全天</td>
+            <td class="price-col" style="text-align:right;">150 ～ 250 元/hr</td>
+          </tr>
+          <tr>
+            <td>
+              <span class="item-name">課程場租</span>
+              <span class="item-sub">瑜伽 / 皮拉提斯 / 講座</span>
+            </td>
+            <td>老師、講師</td>
+            <td>每堂 / 月租方案</td>
+            <td class="price-col" style="text-align:right;">300 ～ 500 元/堂</td>
+          </tr>
+          <tr>
+            <td>
+              <span class="item-name">治療空間</span>
+              <span class="item-sub">徒手治療 / 整復</span>
+            </td>
+            <td>治療師、物理治療</td>
+            <td>每小時 / 半天</td>
+            <td class="price-col" style="text-align:right;">250 ～ 400 元/hr</td>
+          </tr>
+          <tr>
+            <td>
+              <span class="item-name">共享工作</span>
+              <span class="item-sub">個人筆電工作位</span>
+            </td>
+            <td>自由工作者</td>
+            <td>計時 / 日票</td>
+            <td class="price-col" style="text-align:right;">50 ～ 60 元/hr</td>
+          </tr>
+          <tr>
+            <td>
+              <span class="item-name">休閒桌遊</span>
+              <span class="item-sub">假日泡茶咖啡桌遊</span>
+            </td>
+            <td>一般訪客</td>
+            <td>人頭計時</td>
+            <td class="price-col" style="text-align:right;">60 ～ 80 元/人/hr</td>
+          </tr>
+          <tr>
+            <td>
+              <span class="item-name">月租方案</span>
+              <span class="item-sub">固定時段優惠</span>
+            </td>
+            <td>固定使用者</td>
+            <td>月繳</td>
+            <td class="price-col" style="text-align:right;">2,500 ～ 6,000 元/月</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="pricing-foot">
+      <p class="pricing-note">＊ 完整方案、加購項目與會員制度請見預約頁</p>
+      <a href="booking.html" class="btn-ghost btn" style="background:var(--oak); color:white; border-color:var(--oak);">查看完整方案 →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ========== PROCESS ========== -->
+<section class="process" id="process">
+  <div class="container">
+    <div class="section-head">
+      <p class="section-eyebrow">HOW IT WORKS</p>
+      <h2 class="section-title">四步驟完成預約</h2>
+      <p class="section-sub">線上預約、線上付款、自助入場、結束自動結帳</p>
+    </div>
+
+    <div class="proc-grid">
+      <div class="proc-step">
+        <div class="proc-num">01</div>
+        <h4>選擇空間時段</h4>
+        <p>線上選日期、空間、時長，系統即時顯示空檔，避免雙重預約。</p>
+      </div>
+      <div class="proc-step">
+        <div class="proc-num">02</div>
+        <h4>填寫預約資訊</h4>
+        <p>留下姓名、手機、用途。系統自動算出費用，送出後 LINE 收確認。</p>
+      </div>
+      <div class="proc-step">
+        <div class="proc-num">03</div>
+        <h4>線上付款</h4>
+        <p>支援 LINE Pay、街口、信用卡。也可月結對帳。</p>
+      </div>
+      <div class="proc-step">
+        <div class="proc-num">04</div>
+        <h4>自助入場</h4>
+        <p>使用前 1 小時自動傳送門鎖密碼，到時間直接開門使用。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FAQ ========== -->
+<section class="faq" id="faq">
+  <div class="container">
+    <div class="section-head">
+      <p class="section-eyebrow">FAQ</p>
+      <h2 class="section-title">常見問題</h2>
+    </div>
+
+    <div class="faq-list">
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <button class="faq-q"><span>可以臨時當天預約嗎？</span><span class="icon">+</span></button>
+        <div class="faq-a">可以，系統開放當天最晚到使用前 1 小時都還能預約，前提是時段沒人。建議假日時段提前一天預約最保險。</div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <button class="faq-q"><span>取消預約怎麼退款？</span><span class="icon">+</span></button>
+        <div class="faq-a">48 小時前取消全額退款；24 小時前退 50%；12 小時內取消或 No-show 不退款。系統自動執行，不需聯絡客服。</div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <button class="faq-q"><span>瑜伽老師可以帶自己學員來嗎？</span><span class="icon">+</span></button>
+        <div class="faq-a">完全可以。後段工作室就是設計給老師「帶課」使用，月租 8 堂 / 12 堂方案最划算。學員人數沒有限制，只要在空間容納範圍內。</div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <button class="faq-q"><span>停車方便嗎？</span><span class="icon">+</span></button>
+        <div class="faq-a">店門口附近路邊免費停車格充足，海線住宅區停車比市區好停。詳細地址預約後會傳送。</div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <button class="faq-q"><span>可以同時預約前後段嗎？</span><span class="icon">+</span></button>
+        <div class="faq-a">可以全場包場（適合教育訓練、產品發表、私人聚會），請來信或私訊 LINE 客服安排，我們會給你包場專屬優惠。</div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <button class="faq-q"><span>有提供飲料零食嗎？</span><span class="icon">+</span></button>
+        <div class="faq-a">前段吧台有自助咖啡與茶（另計費），可自備外食，但請保持環境整潔。後段工作室不開放飲食。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CONTACT ========== -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="section-head">
+      <p class="section-eyebrow">CONTACT</p>
+      <h2 class="section-title">聯絡 ‧ 找我們</h2>
+      <p class="section-sub">有任何問題、包場需求、合作提案，歡迎直接 LINE 私訊</p>
+    </div>
+
+    <div class="contact-grid">
+      <div class="contact-card">
+        <h3>聯絡方式</h3>
+
+        <div class="contact-row">
+          <div class="contact-icon">📍</div>
+          <div class="contact-info">
+            <div class="contact-key">地址</div>
+            <div class="contact-val"><a href="https://maps.app.goo.gl/fqwdbucEgtu12g2m7" target="_blank">台中市清水區五權路 37 號</a></div>
+          </div>
+        </div>
+
+        <div class="contact-row">
+          <div class="contact-icon">📞</div>
+          <div class="contact-info">
+            <div class="contact-key">電話</div>
+            <div class="contact-val"><a href="tel:0912345588">0912-345-588</a></div>
+          </div>
+        </div>
+
+        <div class="contact-row">
+          <div class="contact-icon">💬</div>
+          <div class="contact-info">
+            <div class="contact-key">LINE 客服</div>
+            <div class="contact-val"><a href="https://line.me/R/ti/p/@goenstay">@goenstay</a></div>
+          </div>
+        </div>
+
+        <div class="contact-row">
+          <div class="contact-icon">🕘</div>
+          <div class="contact-info">
+            <div class="contact-key">營業時間</div>
+            <div class="contact-val">平日 09:00 – 21:00　／　假日 10:00 – 20:00</div>
+          </div>
+        </div>
+
+        <div class="contact-row">
+          <div class="contact-icon">🚗</div>
+          <div class="contact-info">
+            <div class="contact-key">交通</div>
+            <div class="contact-val">門口附近五權路路邊停車免費</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="map-card">
+        <iframe
+          class="map-frame"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3637.01590018325!2d120.56732177500255!3d24.276175168389234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3469137ef5b4f0f9%3A0x912ef490de50e06!2zNDM25Y-w54Gj6Ie65Lit5biC5riF5rC05Y2A6KW_5a-n6YeM5LqU5qyK6LevMzfomZ8!5e0!3m2!1szh-TW!2sjp!4v1778056051124!5m2!1szh-TW!2sjp"
+          style="border:0; width:100%;"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen></iframe>
+        <div class="map-foot">
+          <strong>📍 台中市清水區五權路 37 號</strong><br>
+          海線清水區一樓店面，預約成功後會於使用前 1 小時自動發送門鎖密碼，自助入場無需等候。
+          <a href="https://maps.app.goo.gl/fqwdbucEgtu12g2m7" target="_blank" style="color:var(--oak); display:inline-block; margin-top:6px;">→ 開啟 Google Maps 導航</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CTA BANNER ========== -->
+<section class="cta-banner">
+  <div class="cta-banner-inner">
+    <h2>準備好為你的客戶、學員、自己<br>找一個更專業的場地了嗎？</h2>
+    <p>線上預約三分鐘搞定，沒有最低消費、沒有額外服務費。</p>
+    <a href="booking.html" class="btn btn-primary">立即線上預約 →</a>
+  </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer class="footer">
+  <div class="foot-grid">
+    <div class="foot-brand">
+      <h4>有緣居共享空間</h4>
+      <p>GoenStay SHARED SPACE</p>
+      <p class="desc">清水區海線在地的彈性共享場域，前段多功能空間 × 後段工作室，自助化、彈性、好管理。<br>📍 台中市清水區五權路 37 號　｜　📞 0912-345-588</p>
+    </div>
+    <div class="foot-col">
+      <h5>網站</h5>
+      <a href="#about">關於空間</a>
+      <a href="#spaces">空間介紹</a>
+      <a href="#pricing">收費方案</a>
+      <a href="#faq">常見問題</a>
+      <a href="booking.html">立即預約</a>
+    </div>
+    <div class="foot-col">
+      <h5>聯絡</h5>
+      <a href="https://line.me/R/ti/p/@goenstay">LINE @goenstay</a>
+      <a href="tel:0912345588">0912-345-588</a>
+      <a href="https://maps.app.goo.gl/fqwdbucEgtu12g2m7" target="_blank">五權路 37 號（地圖）</a>
+      <a href="#contact">營業時間 / 交通</a>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>© 2026 有緣居共享空間 ‧ GoenStay</span>
+    <span>Made with ❤︎ in 清水五權路</span>
+  </div>
+</footer>
+
+<script>
+function toggleMenu() {
+  document.getElementById('mobile-menu').classList.toggle('open');
+}
+function toggleFaq(el) {
+  const open = el.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(x => x.classList.remove('open'));
+  if (!open) el.classList.add('open');
+}
+// nav link smooth scroll already handled via scroll-behavior CSS
+</script>
+
+</body>
+</html>
